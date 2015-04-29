@@ -35,6 +35,11 @@ set tabstop=4
 set expandtab 
 set nu
 set nobackup
+colorscheme peaksea
+
+"一旦一行的字符超出80个的话就把那些字符的背景设为红色
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 "搜索时忽略大小写
 set ignorecase
