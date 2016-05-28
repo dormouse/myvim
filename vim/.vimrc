@@ -88,7 +88,7 @@ if has("win32")
     set guifont=Fixedsys
 else
     set fileencoding=utf-8
-    set guifont=文泉驿等宽微米黑\ 12
+    set guifont=文泉驿等宽微米黑\ 11
 endif
 
 """""""""""""""""""""""
@@ -115,6 +115,4 @@ let Tlist_Exit_OnlyWindow = 1 "如果 taglist 窗口是最后一个窗口，则�
 let Tlist_Auto_Open=1 "自动打开Tlist
 "let Tlist_Use_Right_Window = 1 "在右侧窗口中显示 taglist 窗口。
 
-map <F5> :!python %<CR>
-map <F8> :!python3 %<CR>
-colorscheme slate
+
