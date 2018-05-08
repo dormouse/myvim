@@ -1,72 +1,103 @@
-" Pathogen load
-execute pathogen#infect()
-execute pathogen#helptags()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Code folding
-set foldmethod=indent
-set foldlevel=99
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Split window
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Task list
-map <leader>td <Plug>TaskList
-
-" Revision History
-map <leader>g :GundoToggle<CR>
-
-" Syntax highlighting
-filetype on                  " try to detect filetypes
-filetype plugin indent on    " enable loading indent file for filetype
-syntax on                    " syntax highlighing
-
-" Validation
-let g:pyflakes_use_quickfix = 0
-
-" by plugin python-mode
-" turn on python-mode
-let g:pymode = 1
-
-" pep8 autofix
-map <leader>8 :PymodeLintAuto<CR>
-
-" python doc
-let g:pymode_doc_bind = '<leader>k'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
 
 
-" tab complete
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+" plugin on GitHub repo
+" for chinese input 
+Plugin 'vim-scripts/VimIM'
+" for file tree list
+Plugin 'scrooloose/nerdtree'
+" for comment quickly
+Plugin 'scrooloose/nerdcommenter'
 
-" file browser
-map <leader>n :NERDTreeToggle<CR>
+" plugin from http://vim-scripts.org/vim/scripts.html
+" taglist
+Plugin 'taglist.vim'
 
-" Refactoring and Go to definition
-let g:pymode_run_bind = '<leader>r'
-let g:pymode_rope_goto_definition_bind = '<leader>j'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" search
-nmap <leader>a <Esc>:Ack!
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins;
+"                     append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins;
+"                     append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
-" auto reload vimrc
-" autocmd BufWritePost .vimrc source %
 
-set lines=40 columns=85
+"""""""""""""""
+" Key mapping "
+"""""""""""""""
+map <F5> :!python %<CR>
+map <F8> :w<CR>:!python3 %<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-t> :TlistToggle<CR>
+
+
+""""""""""""""""""
+" Plugin setting "
+""""""""""""""""""
+" NerdCommenter
+let g:NERDSpaceDelims = 1
+
+" Taglist
+let Tlist_Show_One_File = 1 " Only current file's tlist
+let Tlist_Exit_OnlyWindow = 1 " If only tlist left, then quit vim
+let Tlist_Auto_Open=1
+let Tlist_Use_Right_Window = 1 " Show in right window
+
+
+"""""""""""""""""
+" Other setting "
+"""""""""""""""""
 set autoindent
+set columns=85
+set colorcolumn=80
+set expandtab 
+set foldmethod=syntax
+set foldmethod=indent
+set ignorecase
 set shiftwidth=4
 set tabstop=4 
-set expandtab 
-set nu
+set lines=40
+set number
 set nobackup
 
-"搜索时忽略大小写
-set ignorecase
+colorscheme slate
 
 "解决中文字符显示半个的问题
 set ambiwidth=double
+
 """""""""""""""""""""""""""""
 "解决windows下的中文乱码问题
 """""""""""""""""""""""""""""
@@ -88,7 +119,7 @@ if has("win32")
     set guifont=Fixedsys
 else
     set fileencoding=utf-8
-    set guifont=文泉驿等宽微米黑\ 12
+    set guifont=文泉驿等宽微米黑\ 11
 endif
 
 """""""""""""""""""""""
@@ -105,16 +136,3 @@ if &diff
     hi DiffText ctermfg=Black ctermbg=Grey guifg=Black guibg=Gray
 endif
 
-"""""""""""
-" 设定TAG "
-"""""""""""
-set foldmethod=syntax " 用语法高亮来定义折叠
-set foldmethod=indent " 更多的缩进表示更高级别的折叠(这个似乎效果好一些)
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的。
-let Tlist_Exit_OnlyWindow = 1 "如果 taglist 窗口是最后一个窗口，则退出 vim。
-let Tlist_Auto_Open=1 "自动打开Tlist
-"let Tlist_Use_Right_Window = 1 "在右侧窗口中显示 taglist 窗口。
-
-map <F5> :!python %<CR>
-map <F8> :!python3 %<CR>
-colorscheme slate
