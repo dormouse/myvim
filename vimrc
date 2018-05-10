@@ -76,6 +76,14 @@ let Tlist_Exit_OnlyWindow = 1 " If only tlist left, then quit vim
 let Tlist_Auto_Open=1
 let Tlist_Use_Right_Window = 1 " Show in right window
 
+" vimim
+" 在 Insert 模式下用 Ctrl-_ 激活输入法
+" Ctrl-6轮换选择不同的输入法
+" 为了方便中文标点符号（全角字符的顿号双引号和单引号）的输入
+let g:Vimim_punctuation = 3
+" 原本Vimim 支持baidu、google、sogou、qq四个云输入法，但是由于google
+" 在国内不能访问，sogou和qq更改了云输入方式，现在能用的云输入法只有baidu了。
+let g:Vimim_cloud='baidu'
 
 """""""""""""""""
 " Other setting "
