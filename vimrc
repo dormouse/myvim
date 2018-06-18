@@ -125,7 +125,10 @@ if has("win32")
     "如果字体名称中含有空格，需要在空格前面加上一个反斜杠(\)：
     "set guifont=Terminal:h18:b:cANSI
     set guifont=Fixedsys
-else
+elseif has('mac')
+    set fileencoding=utf-8
+    set guifont=PT\ Mono:h22
+elseif has('unix')
     set fileencoding=utf-8
     set guifont=文泉驿等宽微米黑\ 11
 endif

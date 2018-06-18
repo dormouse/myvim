@@ -3,80 +3,112 @@
 ## 命令提要
 
 * `za` 开关折叠
+
 * `zR` 打开所有折叠
+
 * `Ctrl+w + v` 垂直拆分
+
 * `Ctrl+w + s` 水平拆分
+
 * `Ctrl+w + q` 关闭当前窗口
+
 * `Ctrl+w + w` 切换窗口
+
 * `Ctrl+w + k` 切换到上边窗口
+
 * `Ctrl+w + j` 切换到下边窗口
+
 * `Ctrl+w + h` 切换到左边窗口
+
 * `Ctrl+w + l` 切换到右边窗口
+
 * `<leader>td` 打开任务列表
+
 * `<leader>g` 打开历史版本
+
 * `<leader>8` 进行 Pep8 自动修复
+
 * `<leader>k` 查看文档
+
 * `:e <filename>` 打开新的文件
+
 * `:b<number>`    切换到第 <number> 个缓冲区
+
 * `:bn`           切换到下一个缓冲区
+
 * `:bd` 或 `:bw`  关闭当前缓冲区
+
 * `<leader>n` 打开文件树
+
 * `<leader>a` 显示搜索命令
+
 * `<leader>r` 运行 python 程序
+
 * `<leader>j` 转到定义位置
 
-## 初始化
+  
 
-安装 pathogen:
+## 安装
 
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+1. Set up [Vundle](http://github.com/VundleVim/Vundle.vim):
 
-初始化 git:
+   `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-    cd ~/.vim/
-    git init
+2. Configure Plugins:
 
-在 ~/.vimrc 中加入以下内容：
+   Put this at the top of your `.vimrc` to use Vundle. Remove plugins you don't need, they are for illustration purposes.
 
-    " Pathogen load
-    execute pathogen#infect()
+   ```
+   set nocompatible              " be iMproved, required
+   filetype off                  " required
+   
+   " set the runtime path to include Vundle and initialize
+   set rtp+=~/.vim/bundle/Vundle.vim
+   call vundle#begin()
+   " alternatively, pass a path where Vundle should install plugins
+   "call vundle#begin('~/some/path/here')
+   
+   " let Vundle manage Vundle, required
+   Plugin 'VundleVim/Vundle.vim'
+   
+   " The following are examples of different formats supported.
+   " Keep Plugin commands between vundle#begin/end.
+   " plugin on GitHub repo
+   Plugin 'tpope/vim-fugitive'
+   " plugin from http://vim-scripts.org/vim/scripts.html
+   " Plugin 'L9'
+   " Git plugin not hosted on GitHub
+   Plugin 'git://git.wincent.com/command-t.git'
+   " git repos on your local machine (i.e. when working on your own plugin)
+   Plugin 'file:///home/gmarik/path/to/plugin'
+   " The sparkup vim script is in a subdirectory of this repo called vim.
+   " Pass the path to set the runtimepath properly.
+   Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+   " Install L9 and avoid a Naming conflict if you've already installed a
+   " different version somewhere else.
+   " Plugin 'ascenator/L9', {'name': 'newL9'}
+   
+   " All of your Plugins must be added before the following line
+   call vundle#end()            " required
+   filetype plugin indent on    " required
+   " To ignore plugin indent changes, instead use:
+   "filetype plugin on
+   "
+   " Brief help
+   " :PluginList       - lists configured plugins
+   " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+   " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+   " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+   "
+   " see :h vundle for more details or wiki for FAQ
+   " Put your non-Plugin stuff after this line
+   ```
 
-安装软件:
+3. Install Plugins:
 
-    sudo pip install pep8
-    sudo apt-get install ack-grep
+   Launch `vim` and run `:PluginInstall`
 
-安装插件:
-
-    git submodule add https://github.com/msanders/snipmate.vim.git bundle/snipmate
-    git submodule add https://github.com/tpope/vim-surround.git bundle/surround
-    git submodule add https://github.com/ervandew/supertab.git bundle/supertab
-    git submodule add https://github.com/fholgado/minibufexpl.vim.git bundle/minibufexpl
-    git submodule add https://github.com/wincent/Command-T.git bundle/command-t
-    git submodule add https://github.com/mitechie/pyflakes-pathogen.git
-    git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
-    git submodule add https://github.com/sjl/gundo.vim.git bundle/gundo
-    git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklist
-    git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
-    git submodule add https://github.com/klen/python-mode.git bundle/pythonmode
-    git submodule add https://github.com/vim-scripts/taglist.vim.git bundle/taglist
-    git submodule init
-    git submodule update
-    git submodule foreach git submodule init
-    git submodule foreach git submodule update
-
-## 维护方法
-
-增加 submodule
-
-    git submodule add https://github.com/klen/python-mode.git bundle/pythonmode
-
-删除 submodule
-
-    git rm --cache bundle/pep8
-    rm -rf bundle/pep8
-    del contene in .gitmodules
+   To install from command line: `vim +PluginInstall +qall`初始化
 
 ## 使用说明
 
