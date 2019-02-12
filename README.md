@@ -5,6 +5,7 @@ gitclone git@github.com:dormouse/myvim.git ~/.vim
 sudo apt-get install exuberant-ctags 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ~/.vim/vimrc ~/.vimrc
+cp ~/.vim/vimim.wubijd.txt ~/.vim/bundle/VimIM/plugin/
 ```
 
 Open Gvim and Run: `:PluginInstall`
