@@ -58,8 +58,7 @@ filetype plugin indent on    " required
 """""""""""""""
 " Key mapping "
 """""""""""""""
-map <F5> :!python %<CR>
-map <F8> :w<CR>:!python3 %<CR>
+map <F5> :w<CR>:!python %<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :TlistToggle<CR>
 
@@ -130,7 +129,7 @@ elseif has('mac')
     set guifont=PT\ Mono:h22
 elseif has('unix')
     set fileencoding=utf-8
-    set guifont=文泉驿等宽微米黑\ 11
+    set guifont=文泉驿等宽微米黑\ 13
 endif
 
 """""""""""""""""""""""
@@ -147,3 +146,9 @@ if &diff
     hi DiffText ctermfg=Black ctermbg=Grey guifg=Black guibg=Gray
 endif
 
+" 修改配置文件后，自动重启
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC
+    " au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END

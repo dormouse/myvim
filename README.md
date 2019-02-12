@@ -1,3 +1,14 @@
+# Install this project
+
+```Shell
+gitclone git@github.com:dormouse/myvim.git ~/.vim
+sudo apt-get install exuberant-ctags 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cp ~/.vim/vimrc ~/.vimrc
+```
+
+Open Gvim and Run: `:PluginInstall`
+
 # My vim for python develop
 
 ## 命令提要
