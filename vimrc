@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 " for chinese input 
 Plugin 'vim-scripts/VimIM'
+Plugin 'vim-scripts/taglist.vim'
 " for file tree list
 Plugin 'scrooloose/nerdtree'
 " for comment quickly
@@ -24,7 +25,6 @@ Plugin 'scrooloose/nerdcommenter'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " taglist
-Plugin 'taglist.vim'
 
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
